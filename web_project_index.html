@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Floating Studio Workspace</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="backdrop" class="backdrop"></div>
+
+  <main id="floating-panel" class="floating-panel" role="dialog" aria-label="Floating Studio Panel">
+    <header id="panel-header" class="panel-header">
+      <div class="header-left">
+        <span class="status-dot" aria-hidden="true"></span>
+        <h1 class="panel-title">Studio Pad</h1>
+      </div>
+      <div class="header-actions">
+        <button id="btn-center" type="button" class="icon-btn" title="Center ([)">Center</button>
+        <button id="btn-toggle" type="button" class="icon-btn" title="Toggle (@)">Hide</button>
+      </div>
+    </header>
+
+    <div class="panel-body">
+      <div class="toolbar">
+        <label class="tool-label">
+          <span>Theme</span>
+          <select id="theme-select" class="tool-select">
+            <option value="dark">Dark Slate</option>
+            <option value="light">Crisp Light</option>
+            <option value="retro">Classic Grid</option>
+          </select>
+        </label>
+
+        <label class="tool-label">
+          <span>Custom BG</span>
+          <input id="bg-upload" type="file" accept="image/*" class="tool-file" />
+        </label>
+
+        <button id="btn-clear-bg" type="button" class="secondary-btn">Reset BG</button>
+      </div>
+
+      <div class="workspace-grid">
+        <section class="card">
+          <div class="card-head">
+            <h2>Quick Notes</h2>
+            <span id="char-count" class="badge">0 chars</span>
+          </div>
+          <textarea
+            id="note-input"
+            class="note-area"
+            rows="6"
+            placeholder="Write snippets, ideas, or checklist items here..."
+          ></textarea>
+          <div class="card-footer">
+            <button id="btn-save-note" type="button" class="primary-btn">Save Note</button>
+            <button id="btn-clear-note" type="button" class="secondary-btn">Clear</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h2>Task Queue</h2>
+            <span id="task-stats" class="badge">0 / 0 done</span>
+          </div>
+          <form id="task-form" class="task-form">
+            <input
+              id="task-input"
+              type="text"
+              class="text-input"
+              placeholder="Add a task..."
+              autocomplete="off"
+            />
+            <button type="submit" class="primary-btn">Add</button>
+          </form>
+          <ul id="task-list" class="task-list"></ul>
+        </section>
+      </div>
+    </div>
+
+    <footer class="panel-footer">
+      <span id="status-msg" class="status-msg">Ready</span>
+      <span class="shortcut-hint">Shortcuts: @ toggle, [ center</span>
+    </footer>
+
+    <div id="resize-handle" class="resize-handle" title="Resize panel"></div>
+  </main>
+
+  <button id="reopen-btn" type="button" class="reopen-btn hidden">Open Studio Pad (@)</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
